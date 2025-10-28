@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "527451405387",
+    "project_id": "zukuplay-18a2c",
+    "storage_bucket": "zukuplay-18a2c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527451405387:android:0a0b69b7cf11ab79df21ce",
+        "android_client_info": {
+          "package_name": "com.zukuplay.mediaplayer.app.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1PjArUGad_nRl3kKDy_6Ks_r3S8zbkbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

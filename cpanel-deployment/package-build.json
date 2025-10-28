@@ -1,0 +1,21 @@
+{
+  "name": "nextplayer-cpanel-builder",
+  "version": "1.0.0",
+  "description": "Build script for NextPlayer cPanel deployment",
+  "main": "build-for-cpanel.js",
+  "scripts": {
+    "build": "node build-for-cpanel.js",
+    "help": "echo 'Run: npm run build to prepare cPanel deployment'"
+  },
+  "bin": {
+    "build-cpanel": "./build-for-cpanel.js"
+  },
+  "keywords": [
+    "cpanel",
+    "deployment",
+    "nextplayer",
+    "build"
+  ],
+  "author": "NextPlayer Team",
+  "license": "ISC"
+} 

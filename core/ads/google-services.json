@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "121316682691",
+    "project_id": "zukuplayer-b7a68",
+    "storage_bucket": "zukuplayer-b7a68.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121316682691:android:f7e3d11d6a2dc7cdc8ab76",
+        "android_client_info": {
+          "package_name": "com.zukuplay.mediaplayer.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA267Pki3x76V1c7R_tmi3mE-NVV3TQOKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121316682691:android:f7e3d11d6a2dc7cdc8ab76",
+        "android_client_info": {
+          "package_name": "com.zukuplay.mediaplayer.app.debug"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA267Pki3x76V1c7R_tmi3mE-NVV3TQOKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:121316682691:android:f7e3d11d6a2dc7cdc8ab76",
+        "android_client_info": {
+          "package_name": "com.zukuplay.mediaplayer.app.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA267Pki3x76V1c7R_tmi3mE-NVV3TQOKA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

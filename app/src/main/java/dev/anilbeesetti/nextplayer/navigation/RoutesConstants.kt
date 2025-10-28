@@ -1,0 +1,14 @@
+package dev.anilbeesetti.nextplayer.navigation
+
+/**
+ * Constants for all navigation routes
+ */
+object RoutesConstants {
+    // Main navigation routes
+    const val MEDIA_ROUTE = "media_nav_route"
+    const val MUSIC_ROUTE = "music_nav_route"
+    const val STREAM_ROUTE = "stream_nav_route"
+    const val SETTINGS_ROUTE = "settings_nav_route"
+    const val NOTIFICATIONS_ROUTE = "notifications_route"
+    const val HOME_ROUTE = "home_nav_route"
+} 

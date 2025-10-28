@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.ZukuPlay" parent="android:Theme.Material.NoActionBar" />
+    
+    <style name="Theme.NextPlayer" parent="android:Theme.Material.NoActionBar" />
+    
+
+    
+    <!-- Edge-to-edge theme with transparent status bar -->
+    <style name="Theme.NextPlayer.EdgeToEdge" parent="Theme.NextPlayer">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>

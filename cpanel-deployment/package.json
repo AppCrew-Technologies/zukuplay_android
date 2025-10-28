@@ -1,0 +1,31 @@
+{
+  "name": "nextplayer-cpanel-backend",
+  "version": "1.0.0",
+  "description": "NextPlayer FCM Notification Server for cPanel hosting",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": [
+    "fcm",
+    "notifications",
+    "nextplayer",
+    "cpanel"
+  ],
+  "author": "NextPlayer Team",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "firebase-admin": "^12.7.0",
+    "cors": "^2.8.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "your-repo-url"
+  }
+} 
