@@ -36,9 +36,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name="dev.anilbeesetti.nextplayer.AudioPlayerActivity"
+            android:exported="true"
+            android:theme="@style/Theme.NextPlayer">
+        </activity>
         <service
-            android:name=".music.AudioPlayerService"
+            android:name="dev.anilbeesetti.nextplayer.music.AudioPlayerService"
 
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
