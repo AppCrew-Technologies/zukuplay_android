@@ -68,7 +68,7 @@ class AudioPlayerActivity : ComponentActivity() {
     // ✅ ADD THIS BLOCK RIGHT HERE ↓↓↓
     override fun onBackPressed() {
         // Stop playback and release resources before finishing
-        //audioService?.stopPlaybackAndRelease()
+        audioService?.stopPlaybackAndRelease()
         super.onBackPressed() // Finish the activity normally
     }
     private val serviceConnection = object : ServiceConnection {
@@ -168,6 +168,7 @@ class AudioPlayerActivity : ComponentActivity() {
                     duration = duration,
                     onBackPressed = {
                         audioService?.let { service ->
+                            service.stopPlaybackAndRelease() // custom safe-stop method (see below)
                         }
                         // Don't stop the service, just finish the activity
                         // Music will continue playing in background

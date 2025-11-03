@@ -488,6 +488,23 @@ class AudioPlayerService : Service() {
                 .build()
         }
     }
-//
+    fun stopPlaybackAndRelease() {
+        try {
+            android.util.Log.d("AudioPlayerService", "stopPlaybackAndRelease() called")
+            player.stop()
+            player.clearMediaItems()
+            player.removeListener(playbackStateListener)
+            player.release()
+            stopForeground(true)
+            stopSelf()
+
+            // Reset global state
+            audioPlayerState.updatePlaybackState(false)
+            audioPlayerState.updateCurrentAudio(null)
+            mediaCoordinator.onPlayerStopped()
+        } catch (e: Exception) {
+            android.util.Log.e("AudioPlayerService", "Error stopping playback", e)
+        }
+    }
 
 } 
