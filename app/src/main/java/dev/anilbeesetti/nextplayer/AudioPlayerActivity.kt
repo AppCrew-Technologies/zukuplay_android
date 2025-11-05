@@ -8,9 +8,11 @@ import android.content.ServiceConnection
 import android.net.Uri
 import android.os.Bundle
 import android.os.IBinder
+import android.util.Log
 import android.view.KeyEvent
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatDelegate
@@ -52,6 +54,7 @@ import dev.anilbeesetti.nextplayer.music.AudioPlayerState
 import dev.anilbeesetti.nextplayer.music.AudioMetadata
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 import javax.inject.Inject
 
 @SuppressLint("UnsafeOptInUsageError")
@@ -65,22 +68,17 @@ class AudioPlayerActivity : ComponentActivity() {
     
     private var audioService: AudioPlayerService? = null
     private var serviceBound = false
-    // ✅ ADD THIS BLOCK RIGHT HERE ↓↓↓
-    override fun onBackPressed() {
-        // Stop playback and release resources before finishing
-        audioService?.stopPlaybackAndRelease()
-        super.onBackPressed() // Finish the activity normally
-    }
+    
     private val serviceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName?, service: IBinder?) {
-            android.util.Log.d("AudioPlayerActivity", "Service connected")
+            Timber.tag("AudioPlayerActivity").d("Service connected")
             val binder = service as AudioPlayerService.AudioPlayerBinder
             audioService = binder.getService()
             serviceBound = true
             
             // If this is a new audio file, start playing automatically with a small delay
             intent.data?.let { uri ->
-                android.util.Log.d("AudioPlayerActivity", "Auto-starting playback for URI: $uri")
+                Timber.tag("AudioPlayerActivity").d("Auto-starting playback for URI: $uri")
                 lifecycleScope.launch {
                     // Add a small delay to ensure service is fully initialized
                     delay(100)
@@ -105,8 +103,19 @@ class AudioPlayerActivity : ComponentActivity() {
         
         // Ensure screenshots are allowed
         window.clearFlags(WindowManager.LayoutParams.FLAG_SECURE)
-
-        android.util.Log.d("AudioPlayerActivity", "onCreate() called with intent data: ${intent.data}")
+        
+        // Handle back press
+        onBackPressedDispatcher.addCallback(this,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    // Your custom back press logic here
+                    // e.g. stop audio, show confirmation, etc.
+//                    audioService?.stopPlaybackAndRelease()
+                    finish() // or do something else
+                }
+            })
+        
+        Timber.tag("AudioPlayerActivity").d("onCreate() called with intent data: ${intent.data}")
 
         try {
             // Stop any running PlayerService first to prevent conflicts
@@ -167,9 +176,7 @@ class AudioPlayerActivity : ComponentActivity() {
                     currentPosition = currentPosition,
                     duration = duration,
                     onBackPressed = {
-                        audioService?.let { service ->
-                            service.stopPlaybackAndRelease() // custom safe-stop method (see below)
-                        }
+//                        audioService?.stopPlaybackAndRelease()
                         // Don't stop the service, just finish the activity
                         // Music will continue playing in background
                         finish() 
