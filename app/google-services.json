@@ -7,6 +7,25 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:527451405387:android:18f84c7bfc106a49df21ce",
+        "android_client_info": {
+          "package_name": "com.zukuplay.mediaplayer.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1PjArUGad_nRl3kKDy_6Ks_r3S8zbkbs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:527451405387:android:0a0b69b7cf11ab79df21ce",
         "android_client_info": {
           "package_name": "com.zukuplay.mediaplayer.app.debug"
