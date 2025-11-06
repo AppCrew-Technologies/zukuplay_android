@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.zukuplay.mediaplayer.app.debug" />
-                  <option name="mobileSdkAppId" value="1:121316682691:android:f7e3d11d6a2dc7cdc8ab76" />
-                  <option name="projectId" value="zukuplayer-b7a68" />
-                  <option name="projectNumber" value="121316682691" />
+                  <option name="mobileSdkAppId" value="1:527451405387:android:0a0b69b7cf11ab79df21ce" />
+                  <option name="projectId" value="zukuplay-18a2c" />
+                  <option name="projectNumber" value="527451405387" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
