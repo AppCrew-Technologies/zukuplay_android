@@ -28,6 +28,7 @@ class NextPlayerApplication : Application() {
         try {
             // Initialize Firebase
             FirebaseManager.initialize(this)
+            //initialize
             MobileAds.initialize(this) { }
 
             applicationScope.launch {
