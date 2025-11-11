@@ -1,10 +1,8 @@
 package dev.anilbeesetti.nextplayer.core.ads
 
 import android.content.Context
-import android.provider.SyncStateContract
 import android.util.Log
 import androidx.activity.ComponentActivity
-import androidx.room.util.copy
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -84,6 +82,7 @@ private suspend fun loadAdsDataToConstants() {
             AdConstants.SHOW_AD_ON_PAUSE = it.show_ad_on_pause
             AdConstants.SHOW_BANNER_BOTTOM = it.show_banner_bottom
             AdConstants.SHOW_BANNER_TOP = it.show_banner_top
+            AdConstants.SHOW_AD_ON_TAB_CHANGE = it.show_ad_on_tab_change
         }
 
         Log.d(TAG, "AdsData loaded and saved to constants: $adsData")
@@ -115,6 +114,7 @@ private suspend fun loadAdsDataToConstants() {
             AdConstants.SHOW_AD_ON_PAUSE = it.show_ad_on_pause
             AdConstants.SHOW_BANNER_BOTTOM = it.show_banner_bottom
             AdConstants.SHOW_BANNER_TOP = it.show_banner_top
+            AdConstants.SHOW_AD_ON_TAB_CHANGE = it.show_ad_on_tab_change
         }
     }
     private suspend fun loadAdConfigurations() {
@@ -135,7 +135,7 @@ private suspend fun loadAdsDataToConstants() {
                         name = "Home Banner",
                         type = AdType.BANNER,
                         placement = AdPlacement.HOME_SCREEN,
-                        adUnitId = "ca-app-pub-3940256099942544/6300978111", // Test banner
+                        adUnitId = AdConstants.ADMOB_BANNER_AD_UNIT_ID, // Test banner
                         isActive = true,
                         priority = 1,
                         frequency = 1,
@@ -149,7 +149,7 @@ private suspend fun loadAdsDataToConstants() {
                     name = "Before Video Interstitial",
                     type = AdType.INTERSTITIAL,
                     placement = AdPlacement.BEFORE_VIDEO,
-                    adUnitId = "ca-app-pub-3940256099942544/1033173712", // Test interstitial
+                    adUnitId = AdConstants.ADMOB_INTERSTITIAL_AD_UNIT_ID, // Test interstitial
                     isActive = true,
                     priority = 1,
                     frequency = 2,
@@ -163,7 +163,7 @@ private suspend fun loadAdsDataToConstants() {
                     name = "After Video Rewarded",
                     type = AdType.REWARDED,
                     placement = AdPlacement.AFTER_VIDEO,
-                    adUnitId = "ca-app-pub-3940256099942544/5224354917", // Test rewarded
+                    adUnitId = AdConstants.ADMOB_REWARDED_AD_UNIT_ID, // Test rewarded
                     isActive = true,
                     priority = 1,
                     frequency = 3,
@@ -177,7 +177,7 @@ private suspend fun loadAdsDataToConstants() {
                         name = "App Open Ad",
                         type = AdType.APP_OPEN,
                         placement = AdPlacement.APP_EXIT,
-                        adUnitId = "ca-app-pub-3940256099942544/3419835294", // Test app open ad
+                        adUnitId = AdConstants.ADMOB_REWARDED_AD_UNIT_ID, // Test app open ad
                         isActive = true,
                         priority = 1,
                         frequency = 1,
@@ -456,13 +456,13 @@ private suspend fun loadAdsDataToConstants() {
     }
     private var interstitialAd1: InterstitialAd? = null
     private var isAdShowing = false
-    fun showInterstitialAdForComposeActivity(activity: ComponentActivity) {
+    fun showInterstitialAdForTabsChangeComposeActivity(activity: ComponentActivity) {
         // ✅ Don’t load or show if an ad is already showing
         if (isAdShowing) return
 
         InterstitialAd.load(
             activity,
-            "ca-app-pub-3940256099942544/1033173712",
+            AdConstants.ADMOB_INTERSTITIAL_AD_UNIT_ID,
             AdRequest.Builder().build(),
             object : InterstitialAdLoadCallback() {
                 override fun onAdLoaded(ad: InterstitialAd) {
@@ -505,7 +505,7 @@ private suspend fun loadAdsDataToConstants() {
         // ✅ Load and show rewarded ad
         com.google.android.gms.ads.rewarded.RewardedAd.load(
             activity,
-            "ca-app-pub-3940256099942544/5224354917", // Test Reward Ad ID
+            AdConstants.ADMOB_REWARDED_AD_UNIT_ID, // Test Reward Ad ID
             com.google.android.gms.ads.AdRequest.Builder().build(),
             object : com.google.android.gms.ads.rewarded.RewardedAdLoadCallback() {
 

@@ -26,9 +26,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
 import com.google.android.gms.ads.*
 import com.google.android.gms.ads.nativead.NativeAd
-
-
-
+import dev.anilbeesetti.nextplayer.core.ads.AdConstants
 
 
 // ✅ 1. Helper function to load native ads (must be top-level)
@@ -56,7 +54,7 @@ private fun loadNativeAd(
 @Composable
 fun NativeAdCornerOverlay(
     modifier: Modifier = Modifier,
-    adUnitId: String = "ca-app-pub-3940256099942544/2247696110" // Test ad ID
+    adUnitId: String = AdConstants.ADMOB_NATIVE_AD_UNIT_ID // Test ad ID
 ) {
     val context = LocalContext.current
     var nativeAd by remember { mutableStateOf<NativeAd?>(null) }

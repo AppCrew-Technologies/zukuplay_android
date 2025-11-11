@@ -44,6 +44,7 @@ import androidx.navigation.NavDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.google.firebase.messaging.Constants
 import dagger.hilt.android.AndroidEntryPoint
 import dev.anilbeesetti.nextplayer.core.ads.AdConstants
 import dev.anilbeesetti.nextplayer.core.ads.AdManager
@@ -482,7 +483,10 @@ fun MainScreen() {
                 isFirstLoad = false
             } else {
                 Log.d("MainScreen", "🔄 Tab changed to: $route — preloading ads now")
-                adManager.showInterstitialAdForComposeActivity(context)
+                if (AdConstants.SHOW_AD_ON_TAB_CHANGE){
+                    adManager.showInterstitialAdForTabsChangeComposeActivity(context)
+                }
+
             }
         }
     }
