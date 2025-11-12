@@ -11,6 +11,7 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import dev.anilbeesetti.nextplayer.core.ads.AdConstants
 
 
 @Composable
@@ -18,7 +19,7 @@ fun BannerAdViewNew() {
     val context = LocalContext.current
     val adView = remember {
         AdView(context).apply {
-            adUnitId = "ca-app-pub-3940256099942544/6300978111" // ✅ Test banner
+            adUnitId = AdConstants.ADMOB_BANNER_AD_UNIT_ID // ✅ Test banner
         }
     }
 

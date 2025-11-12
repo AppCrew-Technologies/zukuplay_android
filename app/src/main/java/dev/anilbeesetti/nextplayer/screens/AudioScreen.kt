@@ -287,10 +287,17 @@ fun AudioScreen(
                 Scaffold(
                     bottomBar = {
                         // Mini player at the bottom
-                        MiniPlayer(
-                            audioPlayerState = audioPlayerState,
-                            modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
-                        )
+                        val state = audioPlayerState.currentAudioUri.collectAsStateWithLifecycle()
+                        if (state.value != null) {
+                            MiniPlayer(
+                                audioPlayerState = audioPlayerState,
+                                modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
+                            )
+                        }
+//                        MiniPlayer(
+//                            audioPlayerState = audioPlayerState,
+//                            modifier = Modifier.padding(horizontal = 20.dp, vertical = 10.dp)
+//                        )
                     },
                     floatingActionButton = {
                         if (isAudioPermissionGranted) {

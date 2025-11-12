@@ -9,7 +9,8 @@ data class AdsData(
     val show_ad_on_app_startup: Boolean = false,
     val show_ad_on_pause: Boolean = false,
     val show_banner_bottom: Boolean = false,
-    val show_banner_top: Boolean = false
+    val show_banner_top: Boolean = false,
+    val show_ad_on_tab_change: Boolean = false
 ) {
     companion object {
         // Default values

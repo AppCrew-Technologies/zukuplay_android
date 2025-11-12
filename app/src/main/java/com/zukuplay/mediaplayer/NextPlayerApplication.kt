@@ -3,6 +3,7 @@ package com.zukuplay.mediaplayer
 import android.app.Application
 import android.content.pm.PackageManager
 import androidx.core.content.ContextCompat
+import com.google.android.gms.ads.MobileAds
 import dagger.hilt.android.HiltAndroidApp
 import dev.anilbeesetti.nextplayer.core.common.di.ApplicationScope
 import dev.anilbeesetti.nextplayer.core.common.storagePermission
@@ -27,7 +28,9 @@ class NextPlayerApplication : Application() {
         try {
             // Initialize Firebase
             FirebaseManager.initialize(this)
-            
+            //initialize
+            MobileAds.initialize(this) { }
+
             applicationScope.launch {
                 try {
                     preferencesRepository.applicationPreferences.first()

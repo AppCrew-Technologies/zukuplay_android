@@ -15,7 +15,7 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         applicationId = "com.zukuplay.mediaplayer.app"
-        versionCode = 36
+        versionCode = 37
         versionName = "1.0.7"
     }
 
@@ -97,14 +97,17 @@ android {
         }
     }
 
-    splits {
-        abi {
-            isEnable = true
-            reset()
-            include("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
-            isUniversalApk = true
-        }
-    }
+		// disable ABI splitting when building an app bundle (AGP 8.9+ bug workaround)
+		val isBuildingBundle = gradle.startParameter.taskNames.any { it.lowercase().contains("bundle") }
+
+		splits {
+				abi {
+						isEnable = !isBuildingBundle
+						reset()
+						include("armeabi-v7a", "arm64-v8a", "x86_64")
+						isUniversalApk = true
+				}
+		}
 
     packaging {
         resources {
