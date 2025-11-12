@@ -15,7 +15,7 @@ android {
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         applicationId = "com.zukuplay.mediaplayer.app"
-        versionCode = 37
+        versionCode = 39
         versionName = "1.0.7"
     }
 
