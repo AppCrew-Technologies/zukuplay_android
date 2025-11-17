@@ -230,21 +230,30 @@ class MainActivity : ComponentActivity() {
                               extras.getBoolean("show_popup", false) || 
                               extras.getString("show_popup") == "true"
             
-            Log.d(TAG, "🔍 fromNotification: $fromNotification, showRichPopup: $showRichPopup")
+            // If we have ctaLink or ctaText, treat it as a notification popup
+            val hasNotificationData = extras.containsKey("ctaLink") || extras.containsKey("ctaText")
+            val shouldShowPopup = fromNotification || showRichPopup || hasNotificationData
             
-            if (fromNotification && showRichPopup) {
+            Log.d(TAG, "🔍 fromNotification: $fromNotification, showRichPopup: $showRichPopup, hasNotificationData: $hasNotificationData, shouldShowPopup: $shouldShowPopup")
+            
+            if (shouldShowPopup) {
                 Log.d(TAG, "🎨 Preparing to show rich notification popup")
                 
                 // Extract notification data for rich popup
-                val title = extras.getString("notification_title") ?: "Notification"
-                val body = extras.getString("notification_body") ?: "New update available"
+                val title = extras.getString("notification_title") ?: extras.getString("title") ?: "Notification"
+                val body = extras.getString("notification_body") ?: extras.getString("body") ?: "New update available"
                 val imageUrl = extras.getString("image_url")
-                val ctaText = extras.getString("cta_text")
-                val ctaLink = extras.getString("cta_link")
+                val ctaText = extras.getString("cta_text") ?: extras.getString("ctaText")
+                val ctaLink = extras.getString("ctaLink") ?: extras.getString("cta_link")
                 val backgroundColor = extras.getString("background_color")
                 val textColor = extras.getString("text_color")
                 
                 Log.d(TAG, "🎯 Popup data extracted: title='$title', body='$body', cta='$ctaText', bg='$backgroundColor'")
+                Log.d(TAG, "🔗 CTA Link extracted: $ctaLink")
+                Log.d(TAG, "🔗 All available keys in extras:")
+                extras.keySet().forEach { key ->
+                    Log.d(TAG, "   📦 $key = ${extras.get(key)}")
+                }
                 
                 // Parse additional buttons
                 val buttons = mutableListOf<dev.anilbeesetti.nextplayer.core.ui.components.PopupButton>()

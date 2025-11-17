@@ -138,6 +138,10 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     private fun showNotification(title: String, body: String, data: Map<String, String>) {
         Log.d(TAG, "🔍 showNotification called with title: '$title', body: '$body'")
         Log.d(TAG, "🔍 showNotification data: $data")
+        Log.d(TAG, "🔍 All data keys: ${data.keys.joinToString(", ")}")
+        data.forEach { (key, value) ->
+            Log.d(TAG, "   📦 $key = $value")
+        }
         
         val intent = Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
@@ -169,6 +173,11 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                     putExtra(key, value)
                     Log.d(TAG, "📝 Setting intent extra $key = '$value'")
                 }
+            }
+            
+            // Explicitly log ctaLink for debugging
+            data["ctaLink"]?.let { link ->
+                Log.d(TAG, "🔗 CTA Link found: $link")
             }
         }
 
